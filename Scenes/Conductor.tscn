@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5ar3qww6rava"]
+
+[ext_resource type="Script" path="res://Scripts/Conductor.gd" id="1_m37xy"]
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_troym"]
+
+[node name="Conductor" type="AudioStreamPlayer2D"]
+script = ExtResource("1_m37xy")
+
+[node name="MidiPlayer2" parent="." instance=ExtResource("2_troym")]
+
+[node name="MidiPlayer" parent="." instance=ExtResource("2_troym")]
+sequence_per_seconds = 100
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[node name="MidiStartTimer" type="Timer" parent="."]
+
+[connection signal="midi_event" from="MidiPlayer" to="." method="_on_midi_player_midi_event"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="MidiStartTimer" to="." method="_on_midi_start_timer_timeout"]

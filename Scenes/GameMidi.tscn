@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://boisab0jfvjc6"]
+
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="1_7uj5j"]
+[ext_resource type="Script" path="res://Scripts/GameMidi.gd" id="1_rc761"]
+[ext_resource type="AudioStream" uid="uid://mwwp41pws4e2" path="res://Assets/duckie-midi-v3.wav" id="3_yce1x"]
+[ext_resource type="PackedScene" uid="uid://fnp37lt6il7f" path="res://Scenes/MidiButton.tscn" id="5_ugcer"]
+
+[node name="GameMidi" type="Node2D"]
+script = ExtResource("1_rc761")
+
+[node name="midiPlay" parent="." instance=ExtResource("1_7uj5j")]
+file = "res://Assets/duckie-midi-v3-channels.mid"
+
+[node name="midiQueue" parent="." instance=ExtResource("1_7uj5j")]
+file = "res://Assets/duckie-midi-v3-channels.mid"
+playing = true
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yce1x")
+
+[node name="buttons" type="Node2D" parent="."]
+position = Vector2(207, 500)
+
+[node name="btnS" parent="buttons" instance=ExtResource("5_ugcer")]
+position = Vector2(-21, 0)
+key = "s"
+
+[node name="btnD" parent="buttons" instance=ExtResource("5_ugcer")]
+position = Vector2(69, 0)
+key = "d"
+
+[node name="btnF" parent="buttons" instance=ExtResource("5_ugcer")]
+position = Vector2(158, 0)
+key = "f"
+
+[node name="btnJ" parent="buttons" instance=ExtResource("5_ugcer")]
+position = Vector2(454, 0)
+key = "j"
+
+[node name="btnK" parent="buttons" instance=ExtResource("5_ugcer")]
+position = Vector2(557, 0)
+key = "k"
+
+[node name="btnL" parent="buttons" instance=ExtResource("5_ugcer")]
+position = Vector2(651, 0)
+key = "l"
+
+[connection signal="midi_event" from="midiQueue" to="." method="_on_midi_queue_midi_event"]

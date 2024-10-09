@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://kdqeybcfxf3s"]
+
+[ext_resource type="Script" path="res://Scripts/Intro.gd" id="1_ohyek"]
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_ohyek")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 463.0
+offset_top = 173.0
+offset_right = 789.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Choose a version to play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonMidi" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 565.0
+offset_top = 283.0
+offset_right = 707.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+text = "Play MIDI version"
+
+[node name="ButtonBeat" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 558.0
+offset_top = 419.0
+offset_right = 699.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+text = "Play beat version"
+
+[connection signal="button_down" from="ButtonMidi" to="." method="_on_button_midi_button_down"]
+[connection signal="button_down" from="ButtonBeat" to="." method="_on_button_beat_button_down"]

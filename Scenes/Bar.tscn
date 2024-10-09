@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ldngw05mbylo"]
+
+[ext_resource type="Script" path="res://Scripts/Bar.gd" id="1_y2w0h"]
+
+[node name="Bar" type="Node2D" groups=["bar"]]
+script = ExtResource("1_y2w0h")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 100)
+width = 5.0
+joint_mode = 1
+
+[node name="Timer" type="Timer" parent="."]

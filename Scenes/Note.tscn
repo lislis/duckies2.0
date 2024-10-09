@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4i3hjrkcyi1w"]
+
+[ext_resource type="Script" path="res://Scripts/Note.gd" id="1_0caud"]
+[ext_resource type="Texture2D" uid="uid://clsqrw0mbgud6" path="res://Assets/point-yellow.png" id="1_p2df6"]
+[ext_resource type="Texture2D" uid="uid://c1ky27ufghf7f" path="res://Assets/button_pink.png" id="2_gt3gj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gx2fk"]
+size = Vector2(38, 38)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cr0ia"]
+font_size = 28
+font_color = Color(0.135012, 0.135012, 0.135012, 1)
+
+[node name="Note" type="Area2D"]
+script = ExtResource("1_0caud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gx2fk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gt3gj")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_p2df6")
+spread = 180.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Key" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 19.0
+label_settings = SubResource("LabelSettings_cr0ia")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

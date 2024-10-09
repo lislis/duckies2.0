@@ -1,3 +1,38 @@
-[gd_scene format=3 uid="uid://c2hkko3l2a6my"]
+[gd_scene load_steps=6 format=3 uid="uid://c2hkko3l2a6my"]
+
+[ext_resource type="PackedScene" uid="uid://c5ar3qww6rava" path="res://Scenes/Conductor.tscn" id="1_fc3tk"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_iggsx"]
+[ext_resource type="AudioStream" uid="uid://mwwp41pws4e2" path="res://Assets/duckie-midi-v3.wav" id="3_tv6hd"]
+[ext_resource type="PackedScene" uid="uid://0qr6ah2lwbpw" path="res://Scenes/HitArea.tscn" id="4_q6pkp"]
+[ext_resource type="Script" path="res://Scripts/Debug.gd" id="5_0pnxv"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_iggsx")
+
+[node name="Conductor" parent="." instance=ExtResource("1_fc3tk")]
+visible = false
+stream = ExtResource("3_tv6hd")
+midi_file = "Assets/duckie-midi-v3-channels.mid"
+
+[node name="StartLabel" type="Label" parent="."]
+visible = false
+offset_left = 488.0
+offset_top = 228.0
+offset_right = 702.0
+offset_bottom = 251.0
+text = "Press <up> to start"
+
+[node name="HitArea" parent="." instance=ExtResource("4_q6pkp")]
+position = Vector2(200, 70)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 88.0
+offset_top = 84.0
+offset_right = 128.0
+offset_bottom = 107.0
+script = ExtResource("5_0pnxv")
+
+[connection signal="b_beat" from="Conductor" to="." method="_on_conductor_b_beat"]
+[connection signal="b_measure" from="Conductor" to="." method="_on_conductor_b_measure"]
+[connection signal="b_midi" from="Conductor" to="." method="_on_conductor_b_midi"]
