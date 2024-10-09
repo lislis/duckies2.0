@@ -1,13 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2hkko3l2a6my"]
+[gd_scene load_steps=8 format=3 uid="uid://c2hkko3l2a6my"]
 
 [ext_resource type="PackedScene" uid="uid://c5ar3qww6rava" path="res://Scenes/Conductor.tscn" id="1_fc3tk"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_iggsx"]
+[ext_resource type="Texture2D" uid="uid://b68a5ja5evpug" path="res://Sprites/bg.png" id="2_sr832"]
 [ext_resource type="AudioStream" uid="uid://mwwp41pws4e2" path="res://Assets/duckie-midi-v3.wav" id="3_tv6hd"]
 [ext_resource type="PackedScene" uid="uid://0qr6ah2lwbpw" path="res://Scenes/HitArea.tscn" id="4_q6pkp"]
 [ext_resource type="Script" path="res://Scripts/Debug.gd" id="5_0pnxv"]
+[ext_resource type="PackedScene" uid="uid://u5nh618ifvro" path="res://Scenes/Duckie.tscn" id="7_kr6ww"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_iggsx")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(544, 293)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_sr832")
 
 [node name="Conductor" parent="." instance=ExtResource("1_fc3tk")]
 visible = false
@@ -32,6 +39,9 @@ offset_top = 84.0
 offset_right = 128.0
 offset_bottom = 107.0
 script = ExtResource("5_0pnxv")
+
+[node name="Duckie" parent="." instance=ExtResource("7_kr6ww")]
+position = Vector2(522, 380)
 
 [connection signal="b_beat" from="Conductor" to="." method="_on_conductor_b_beat"]
 [connection signal="b_measure" from="Conductor" to="." method="_on_conductor_b_measure"]

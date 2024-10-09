@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://u5nh618ifvro"]
+
+[ext_resource type="Script" path="res://Scripts/Duckie.gd" id="1_6f8q8"]
+[ext_resource type="Texture2D" uid="uid://bnacj0k7o8pl3" path="res://Sprites/duckie.png" id="1_euc86"]
+[ext_resource type="Texture2D" uid="uid://d3abctu1g6ptm" path="res://Sprites/duckie-tail.png" id="2_5i4qu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j2a6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_euc86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5i4qu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Duckie" type="Node2D"]
+script = ExtResource("1_6f8q8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_j2a6c")

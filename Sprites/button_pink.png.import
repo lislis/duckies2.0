@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clsqrw0mbgud6"
-path="res://.godot/imported/point-yellow.png-c9e2ee59827193f5b9590afd502657c6.ctex"
+uid="uid://b1l1jp62vx2h5"
+path="res://.godot/imported/button_pink.png-5ef72627aab7d121a856267911bfe137.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/point-yellow.png"
-dest_files=["res://.godot/imported/point-yellow.png-c9e2ee59827193f5b9590afd502657c6.ctex"]
+source_file="res://Sprites/button_pink.png"
+dest_files=["res://.godot/imported/button_pink.png-5ef72627aab7d121a856267911bfe137.ctex"]
 
 [params]
 

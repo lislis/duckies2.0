@@ -5,8 +5,6 @@ var delta_sum = 0.0
 # time between the midiQueue and midiplay+music
 var time_to_start = 1.0
 
-var left = []
-
 var note = preload("res://Scenes/MidiNote.tscn")
 
 @onready var state = {
@@ -61,16 +59,19 @@ func _process(delta):
 				print(elem.queue.front().expected_time, " ",  delta_sum)
 				if elem.queue.front().test_hit(delta_sum):
 					elem.queue.pop_front().hit()
+					$Duckie.head_down = true
+					elem.node.get_node("Message").text = "Great"
 					print("hit")
 				else:
+					elem.node.get_node("Message").text = "Too early"
 					print("too early")
 			else:
-				print("This should not happen")
+				print("Nothing here yet")
 		if not elem.queue.is_empty():
 			if elem.queue.front().test_miss(delta_sum):
 				elem.queue.pop_front().miss()
+				elem.node.get_node("Message").text = "Miss"
 				print("miss")
-	
 
 	if delta_sum >= time_to_start and not $music.playing:
 		#$music.play()
@@ -83,15 +84,28 @@ func _process(delta):
 
 func _on_midi_queue_midi_event(channel, event):
 	if channel.number == 2:
-		var elem = state.get(event.note)
-		
+		queue_midi_note(event)
+	if channel.number == 3:
+		animate_duckie(event)
+
+
+func queue_midi_note(ev):
+	var elem = state.get(ev.note)
 		# 128 on, 144 off
-		if elem and event.type == 144:
-			var n = note.instantiate()
-			n.expected_time	= delta_sum + time_to_start
-			n.global_position.y = -40 # is this calc or guess?
-			n.global_position.x = elem.node.global_position.x
-			n.color 				= elem.color
-			n.key 				= elem.key
-			add_child(n)
-			elem.queue.push_back(n)
+	if elem and ev.type == 144:
+		var n = note.instantiate()
+		n.expected_time	= delta_sum + time_to_start
+		n.global_position.y = -40 # is this calc or guess?
+		n.global_position.x = elem.node.global_position.x
+		n.color 				= elem.color
+		n.key 				= elem.key
+		add_child(n)
+		elem.queue.push_back(n)
+
+func animate_duckie(ev):
+	if ev.type == 128:
+		var tween = create_tween()
+		tween.tween_property($Duckie, "position:y", 372, 0.4)
+	elif ev.type == 144:
+		var tween = create_tween()
+		tween.tween_property($Duckie, "position:y", 392, 0.4)

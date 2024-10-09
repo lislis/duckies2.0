@@ -4,6 +4,9 @@ extends Node2D
 @export var color: Color
 @export var key: String
 
+var message_counter = 0.0
+var max_message = 0.4
+
 func _input(event):
 	if Input.is_action_just_pressed(key):
 		pressed = true
@@ -22,3 +25,10 @@ func _process(delta):
 		modulate = lerp(modulate, Color.LIGHT_SLATE_GRAY, delta * 10.0)
 		scale.y = lerp(scale.y, 1.0, delta * 1.0)
 		scale.x = lerp(scale.x, 1.0, delta * 1.0)
+	
+	if $Message.text != "":
+		message_counter += delta
+		if message_counter > max_message:
+			$Message.text = ""
+			message_counter = 0
+		

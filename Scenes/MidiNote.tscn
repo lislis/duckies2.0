@@ -19,7 +19,3 @@ offset_bottom = 19.0
 label_settings = SubResource("LabelSettings_cr0ia")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="state" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0

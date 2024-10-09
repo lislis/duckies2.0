@@ -1,12 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://boisab0jfvjc6"]
+[gd_scene load_steps=7 format=3 uid="uid://boisab0jfvjc6"]
 
 [ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="1_7uj5j"]
 [ext_resource type="Script" path="res://Scripts/GameMidi.gd" id="1_rc761"]
 [ext_resource type="AudioStream" uid="uid://mwwp41pws4e2" path="res://Assets/duckie-midi-v3.wav" id="3_yce1x"]
+[ext_resource type="Texture2D" uid="uid://b68a5ja5evpug" path="res://Sprites/bg.png" id="5_3cpne"]
 [ext_resource type="PackedScene" uid="uid://fnp37lt6il7f" path="res://Scenes/MidiButton.tscn" id="5_ugcer"]
+[ext_resource type="PackedScene" uid="uid://u5nh618ifvro" path="res://Scenes/Duckie.tscn" id="6_8x55p"]
 
 [node name="GameMidi" type="Node2D"]
 script = ExtResource("1_rc761")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(544, 293)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_3cpne")
 
 [node name="midiPlay" parent="." instance=ExtResource("1_7uj5j")]
 file = "res://Assets/duckie-midi-v3-channels.mid"
@@ -44,5 +51,8 @@ key = "k"
 [node name="btnL" parent="buttons" instance=ExtResource("5_ugcer")]
 position = Vector2(651, 0)
 key = "l"
+
+[node name="Duckie" parent="." instance=ExtResource("6_8x55p")]
+position = Vector2(497, 392)
 
 [connection signal="midi_event" from="midiQueue" to="." method="_on_midi_queue_midi_event"]

@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://fnp37lt6il7f"]
+[gd_scene load_steps=5 format=3 uid="uid://fnp37lt6il7f"]
 
 [ext_resource type="Texture2D" uid="uid://c1ky27ufghf7f" path="res://Assets/button_pink.png" id="1_djypk"]
 [ext_resource type="Script" path="res://Scripts/MidiButton.gd" id="2_7jfma"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tm7kw"]
 font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_vey1j"]
+font_size = 30
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("2_7jfma")
@@ -18,5 +21,14 @@ offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 19.0
 label_settings = SubResource("LabelSettings_tm7kw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+offset_left = -28.0
+offset_top = -69.0
+offset_right = 27.0
+offset_bottom = -27.0
+label_settings = SubResource("LabelSettings_vey1j")
 horizontal_alignment = 1
 vertical_alignment = 1

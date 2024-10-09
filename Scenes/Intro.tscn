@@ -1,9 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://kdqeybcfxf3s"]
+[gd_scene load_steps=6 format=3 uid="uid://kdqeybcfxf3s"]
 
 [ext_resource type="Script" path="res://Scripts/Intro.gd" id="1_ohyek"]
+[ext_resource type="Texture2D" uid="uid://b68a5ja5evpug" path="res://Sprites/bg.png" id="2_bxjkh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7nah0"]
+font_size = 50
+font_color = Color(1, 0.858824, 0.180392, 1)
+outline_size = 5
+outline_color = Color(1, 0.733333, 0.180392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_81l6u"]
+font_size = 24
+
+[sub_resource type="Theme" id="Theme_yn75w"]
 
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_ohyek")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(544, 293)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_bxjkh")
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 290.0
+offset_top = 75.0
+offset_right = 775.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "All My Little Duckies"
+label_settings = SubResource("LabelSettings_7nah0")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8
@@ -11,13 +42,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 463.0
-offset_top = 173.0
-offset_right = 789.0
-offset_bottom = 196.0
+offset_left = 376.0
+offset_top = 256.0
+offset_right = 702.0
+offset_bottom = 290.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 3
 text = "Choose a version to play"
+label_settings = SubResource("LabelSettings_81l6u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -27,13 +60,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 565.0
-offset_top = 283.0
-offset_right = 707.0
-offset_bottom = 314.0
+offset_left = 309.0
+offset_top = 325.0
+offset_right = 485.0
+offset_bottom = 361.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+theme = SubResource("Theme_yn75w")
+theme_override_font_sizes/font_size = 20
 text = "Play MIDI version"
 
 [node name="ButtonBeat" type="Button" parent="."]
@@ -42,13 +77,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 558.0
-offset_top = 419.0
-offset_right = 699.0
-offset_bottom = 450.0
+offset_left = 598.0
+offset_top = 329.0
+offset_right = 772.0
+offset_bottom = 365.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
 text = "Play beat version"
 
 [connection signal="button_down" from="ButtonMidi" to="." method="_on_button_midi_button_down"]

@@ -18,7 +18,7 @@ func _process(delta):
 	# node start position - position of button to match
 	var speed = abs(-40.0 - 500.0) 
 	#global_position.y += delta * 600.0 # calc or guess?
-	global_position.y += delta * speed # calc or guess?
+	global_position.y += delta * speed
 	
 	if state == "miss":
 		if global_position.y > 600.0: # window height?
@@ -36,11 +36,8 @@ func test_miss(time: float):
 	
 func hit():
 	state = "hit"
-	$state.text = "hit"
-	#global_position = position_to_freeze
 	
 func miss():
 	state = "miss"
-	$state.text = "miss"
 	
 	
