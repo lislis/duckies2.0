@@ -85,7 +85,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 20
-text = "Play beat version"
+text = "Play Conductor version"
 
 [connection signal="button_down" from="ButtonMidi" to="." method="_on_button_midi_button_down"]
 [connection signal="button_down" from="ButtonBeat" to="." method="_on_button_beat_button_down"]

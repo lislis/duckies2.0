@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2hkko3l2a6my"]
+
+[ext_resource type="Script" path="res://Scripts/GameConductor.gd" id="1_bmha0"]
+[ext_resource type="Texture2D" uid="uid://b68a5ja5evpug" path="res://Sprites/bg.png" id="2_4qqr4"]
+[ext_resource type="PackedScene" uid="uid://c5ar3qww6rava" path="res://Scenes/Conductor.tscn" id="3_o3wrn"]
+[ext_resource type="AudioStream" uid="uid://mwwp41pws4e2" path="res://Assets/duckie-midi-v3.wav" id="4_auo3l"]
+[ext_resource type="PackedScene" uid="uid://dwkmro5osbms8" path="res://Scenes/ArrowButton.tscn" id="5_jfbtx"]
+[ext_resource type="PackedScene" uid="uid://u5nh618ifvro" path="res://Scenes/Duckie.tscn" id="6_heyns"]
+
+[sub_resource type="GDScript" id="GDScript_wummr"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	set_text(str(Engine.get_frames_per_second()))
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_7hnkr"]
+font_size = 28
+
+[node name="GameConductor" type="Node2D"]
+script = ExtResource("1_bmha0")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(544, 293)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_4qqr4")
+
+[node name="Conductor" parent="." instance=ExtResource("3_o3wrn")]
+visible = false
+stream = ExtResource("4_auo3l")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 88.0
+offset_top = 84.0
+offset_right = 128.0
+offset_bottom = 107.0
+script = SubResource("GDScript_wummr")
+
+[node name="Combo" type="Label" parent="."]
+offset_left = 85.0
+offset_top = 500.0
+offset_right = 125.0
+offset_bottom = 523.0
+label_settings = SubResource("LabelSettings_7hnkr")
+
+[node name="ArrowUp" parent="." instance=ExtResource("5_jfbtx")]
+position = Vector2(130, 46)
+input = "up"
+
+[node name="ArrowRight" parent="." instance=ExtResource("5_jfbtx")]
+position = Vector2(130, 125)
+frame = 1
+input = "right"
+
+[node name="ArrowLeft" parent="." instance=ExtResource("5_jfbtx")]
+position = Vector2(130, 208)
+frame = 2
+input = "left"
+
+[node name="Duckie2" parent="." instance=ExtResource("6_heyns")]
+position = Vector2(501, 399)
+
+[node name="Duckie3" parent="." instance=ExtResource("6_heyns")]
+position = Vector2(818, 457)
+
+[connection signal="b_beat" from="Conductor" to="." method="_on_Conductor_beat"]
+[connection signal="b_measure" from="Conductor" to="." method="_on_Conductor_measure"]
+[connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]

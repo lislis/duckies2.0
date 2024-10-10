@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4i3hjrkcyi1w"]
+[gd_scene load_steps=5 format=3 uid="uid://d4i3hjrkcyi1w"]
 
 [ext_resource type="Script" path="res://Scripts/Note.gd" id="1_0caud"]
-[ext_resource type="Texture2D" path="res://Assets/point-yellow.png" id="1_p2df6"]
 [ext_resource type="Texture2D" uid="uid://c1ky27ufghf7f" path="res://Assets/button_pink.png" id="2_gt3gj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx2fk"]
@@ -26,7 +25,6 @@ amount = 16
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
-texture = ExtResource("1_p2df6")
 spread = 180.0
 
 [node name="Timer" type="Timer" parent="."]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clsqrw0mbgud6"
-path="res://.godot/imported/point-yellow.png-1324a927b4fd7c44f712dfa64b891842.ctex"
+uid="uid://cb2vdchfn1job"
+path="res://.godot/imported/arrow_right.png-c5f60ac84294fab8b0154f0cb69e4127.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/point-yellow.png"
-dest_files=["res://.godot/imported/point-yellow.png-1324a927b4fd7c44f712dfa64b891842.ctex"]
+source_file="res://Sprites/arrow_right.png"
+dest_files=["res://.godot/imported/arrow_right.png-c5f60ac84294fab8b0154f0cb69e4127.ctex"]
 
 [params]
 

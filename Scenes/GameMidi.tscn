@@ -56,3 +56,4 @@ key = "l"
 position = Vector2(497, 392)
 
 [connection signal="midi_event" from="midiQueue" to="." method="_on_midi_queue_midi_event"]
+[connection signal="finished" from="music" to="." method="_on_music_finished"]

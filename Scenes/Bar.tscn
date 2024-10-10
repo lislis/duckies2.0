@@ -1,9 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://ldngw05mbylo"]
+[gd_scene load_steps=2 format=3 uid="uid://cjqjsqkcyu1el"]
 
-[ext_resource type="Script" path="res://Scripts/Bar.gd" id="1_y2w0h"]
+[sub_resource type="GDScript" id="GDScript_lflwp"]
+script/source = "extends Node2D
+
+const TARGET_X = Global.TARGET_X
+const SPAWN_X = Global.SPAWN_X
+const DIST_TO_TARGET = abs(TARGET_X - SPAWN_X)
+
+var speed = 0
+#var hit = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	speed = DIST_TO_TARGET / 2.0
+
+func _physics_process(delta):
+	#if !hit:
+	position.x -= speed * delta
+	if position.x < 0:
+		queue_free()
+		#get_parent().reset_combo()
+	#else:
+		#$Node2D.position.x += speed * delta
+	
+"
 
 [node name="Bar" type="Node2D" groups=["bar"]]
-script = ExtResource("1_y2w0h")
+script = SubResource("GDScript_lflwp")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 0, 100)

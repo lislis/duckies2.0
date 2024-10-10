@@ -109,3 +109,7 @@ func animate_duckie(ev):
 	elif ev.type == 144:
 		var tween = create_tween()
 		tween.tween_property($Duckie, "position:y", 392, 0.4)
+
+func _on_music_finished():
+	if get_tree().change_scene_to_file("res://Scenes/Intro.tscn") != OK:
+		print ("Error changing scene to Intro")

@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://beea8yx5oesq5"]
+
+[ext_resource type="Script" path="res://Scripts/ArrowNote.gd" id="1_ji322"]
+[ext_resource type="Texture2D" uid="uid://i2dmnk223q5f" path="res://Sprites/arrow_left.png" id="2_d81wt"]
+[ext_resource type="Texture2D" uid="uid://1vjlsswrujwo" path="res://Sprites/arrow_up.png" id="3_e0vty"]
+[ext_resource type="Texture2D" uid="uid://cb2vdchfn1job" path="res://Sprites/arrow_right.png" id="4_l1fxt"]
+[ext_resource type="Texture2D" uid="uid://b1l1jp62vx2h5" path="res://Sprites/button_pink.png" id="5_i68bb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p2rbi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d81wt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e0vty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l1fxt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w610t"]
+size = Vector2(12.5, 39.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wxrxv"]
+font_size = 24
+
+[node name="ArrowNote" type="Area2D" groups=["note"]]
+script = ExtResource("1_ji322")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p2rbi")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(-14, 0)
+shape = SubResource("RectangleShape2D_w610t")
+
+[node name="CPUParticles" type="CPUParticles2D" parent="."]
+scale = Vector2(0.3, 0.3)
+emitting = false
+amount = 24
+lifetime = 0.8
+one_shot = true
+speed_scale = 2.32
+explosiveness = 0.86
+local_coords = true
+texture = ExtResource("5_i68bb")
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_wxrxv")
+
+[connection signal="timeout" from="Timer" to="." method="_onTimer_timeout"]

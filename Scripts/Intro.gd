@@ -11,5 +11,5 @@ func _on_button_midi_button_down():
 
 
 func _on_button_beat_button_down():
-	if get_tree().change_scene_to_file("res://Scenes/Game.tscn") != OK:
-			print ("Error changing scene to Game")
+	if get_tree().change_scene_to_file("res://Scenes/GameConductor.tscn") != OK:
+			print ("Error changing scene to GameConductor")
